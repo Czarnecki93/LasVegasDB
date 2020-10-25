@@ -29,8 +29,7 @@ namespace LasVegasDB
             cmd = new SqlCommand(selectString, connectionString);
 
             connectionString.Open();
-            String strResult = String.Empty;
-            strResult = (String)cmd.ExecuteScalar();
+            string strResult = (string)cmd.ExecuteScalar();
             connectionString.Close();
 
             if (strResult == null)
@@ -39,6 +38,7 @@ namespace LasVegasDB
             }
             else
             {
+
                 Response.Redirect("Admin.aspx");
             }
         }
