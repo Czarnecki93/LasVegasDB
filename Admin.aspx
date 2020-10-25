@@ -9,10 +9,16 @@
         .auto-style1 {
             text-align: center;
         }
+        .auto-style2 {
+            text-align: right;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="auto-style2">
+            <asp:Button ID="ButtonLogout" runat="server" OnClick="ButtonLogout_Click" Text="Logout" />
+        </div>
         <h1 class="auto-style1">CREATE NEW USER</h1>
         <div>
             <asp:DropDownList ID="DropDownListLevel" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListLevel_SelectedIndexChanged">

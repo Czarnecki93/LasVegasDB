@@ -107,7 +107,7 @@ namespace LasVegasDB
             // Dropdown value is "Magician"
             else
             {
-                string sqlins = "insert into Magician values (@Name, @Artistname, @Password, @Level, @Manager)";
+                string sqlins = "insert into Magician values (@Name, @Artistname, @Password, @Level)";
 
                 try
                 {
@@ -118,13 +118,11 @@ namespace LasVegasDB
                     cmd.Parameters.Add("@Artistname", SqlDbType.Text);
                     cmd.Parameters.Add("@Password", SqlDbType.Text);
                     cmd.Parameters.Add("@Level", SqlDbType.Int);
-                    cmd.Parameters.Add("@Manager", SqlDbType.Int);
 
                     cmd.Parameters["@Name"].Value = TextBoxSignupName.Text;
                     cmd.Parameters["@Artistname"].Value = TextBoxSignupArtistName.Text;
                     cmd.Parameters["@Password"].Value = TextBoxSignupPassword.Text;
                     cmd.Parameters["@Level"].Value = 3;
-                    cmd.Parameters["@Manager"].Value = 1;
 
 
                     cmd.ExecuteNonQuery();
@@ -184,6 +182,11 @@ namespace LasVegasDB
 
             LabelUserTable.Text = "User has been deleted.";
 
+        }
+
+        protected void ButtonLogout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Index.aspx");
         }
     }
 }
