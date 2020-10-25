@@ -39,7 +39,7 @@ namespace LasVegasDB
             }
             else
             {
-                Response.Redirect("Signup.aspx");
+                Response.Redirect("Admin.aspx");
             }
         }
     }

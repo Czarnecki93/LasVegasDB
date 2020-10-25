@@ -157,21 +157,33 @@ namespace LasVegasDB
             // Create the delete query
             string sqldel = @"delete from Magician where id = @id";
 
-            cmd = new SqlCommand(sqldel, conn);
-            cmd.Parameters.Add("@id", SqlDbType.Int);
-            cmd.Parameters["@id"].Value = id;
-
             try
             {
                 conn.Open();
-                cmd.ExecuteScalar();
+                cmd = new SqlCommand(sqldel, conn);
+                cmd.Parameters.Add("@id", SqlDbType.Int);
+                cmd.Parameters["@id"].Value = id;
+                cmd.ExecuteNonQuery();
             }
-            catch (SqlException)
+            catch (ConstraintException conex)
             {
-                LabelUserTable.Text = "This user has active acts.";
+                LabelUserTable.Text = conex.Message;
+            }
+            catch (SqlException sqlex)
+            {
+                LabelUserTable.Text = sqlex.Message;
+            }
+            catch (Exception ex)
+            {
+                LabelUserTable.Text = ex.Message;
+            }
+            finally
+            {
+                conn.Close();
             }
 
             LabelUserTable.Text = "User has been deleted.";
+
         }
     }
 }
