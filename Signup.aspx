@@ -37,22 +37,20 @@
         </div>
         <h1 class="auto-style1">MANAGE USERS</h1>
         <div>
-            <asp:SqlDataSource ID="SqlDataSourceUsers" runat="server" ConnectionString="<%$ ConnectionStrings:LasVegasConnectionString %>" DeleteCommandType="StoredProcedure" SelectCommand="SELECT Name, Level FROM (
-	SELECT Magician.realname AS &quot;Name&quot;, Magician.accesslevel AS Level FROM Magician
-	UNION ALL
-	SELECT Secretary.name, Secretary.accesslevel AS Level FROM Secretary
-	UNION ALL
-	SELECT Manager.name, Manager.accesslevel AS Level FROM Manager) 
-	AS users
-GROUP BY Name, Level
-ORDER BY Name, Level;"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSourceUsers" runat="server" ConnectionString="<%$ ConnectionStrings:LasVegasConnectionString %>" SelectCommand="SELECT id AS 'ID', realname AS 'Name',
+CASE
+    WHEN accesslevel = 1 THEN 'Manager'
+    WHEN accesslevel = 2 THEN 'Secretary'
+    ELSE 'Magician'
+END AS [Level]
+FROM Magician;"></asp:SqlDataSource>
             <br />
-            <asp:GridView ID="GridViewUsers" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSourceUsers" ForeColor="#333333" GridLines="None" OnRowDeleting="GridViewUsers_RowDeleting">
+            <asp:GridView ID="GridViewUsers" runat="server" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="ID" DataSourceID="SqlDataSourceUsers" ForeColor="#333333" GridLines="None" OnRowDeleting="GridViewUsers_RowDeleting">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
-                    <asp:BoundField DataField="Name" HeaderText="Name" ReadOnly="True" SortExpression="Name" />
+                    <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                     <asp:BoundField DataField="Level" HeaderText="Level" ReadOnly="True" SortExpression="Level" />
-                    <asp:ButtonField ButtonType="Button" CommandName="Delete" HeaderText="Delete" ShowHeader="True" Text="Delete" />
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

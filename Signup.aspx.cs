@@ -36,7 +36,7 @@ namespace LasVegasDB
 
             if (DropDownListLevel.SelectedValue.Equals("Manager"))
             {
-                string sqlins = "insert into Manager values (@Name, @Password, @Level)";
+                string sqlins = "insert into Magician values (@Name, @Artistname, @Password, @Level)";
 
                 try
                 {
@@ -44,10 +44,12 @@ namespace LasVegasDB
 
                     cmd = new SqlCommand(sqlins, conn);
                     cmd.Parameters.Add("@Name", SqlDbType.Text);
+                    cmd.Parameters.Add("@Artistname", SqlDbType.Text);
                     cmd.Parameters.Add("@Password", SqlDbType.Text);
                     cmd.Parameters.Add("@Level", SqlDbType.Int);
 
                     cmd.Parameters["@Name"].Value = TextBoxSignupName.Text;
+                    cmd.Parameters["@Artistname"].Value = DBNull.Value;
                     cmd.Parameters["@Password"].Value = TextBoxSignupPassword.Text;
                     cmd.Parameters["@Level"].Value = 1;
 
@@ -69,7 +71,7 @@ namespace LasVegasDB
             }
             else if (DropDownListLevel.SelectedValue.Equals("Secretary"))
             {
-                string sqlins = "insert into Secretary values (@Name, @Password, @Level)";
+                string sqlins = "insert into Magician values (@Name, @Artistname, @Password, @Level)";
 
                 try
                 {
@@ -77,10 +79,12 @@ namespace LasVegasDB
 
                     cmd = new SqlCommand(sqlins, conn);
                     cmd.Parameters.Add("@Name", SqlDbType.Text);
+                    cmd.Parameters.Add("@Artistname", SqlDbType.Text);
                     cmd.Parameters.Add("@Password", SqlDbType.Text);
                     cmd.Parameters.Add("@Level", SqlDbType.Int);
 
                     cmd.Parameters["@Name"].Value = TextBoxSignupName.Text;
+                    cmd.Parameters["@Artistname"].Value = DBNull.Value;
                     cmd.Parameters["@Password"].Value = TextBoxSignupPassword.Text;
                     cmd.Parameters["@Level"].Value = 2;
 
