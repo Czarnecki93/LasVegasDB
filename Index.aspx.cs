@@ -15,5 +15,34 @@ namespace LasVegasDB
         {
 
         }
+
+        protected void ButtonLogin_Click(object sender, EventArgs e)
+        {
+            SqlConnection connectionString = new SqlConnection(@"data source = localhost; integrated security = true; database = LasVegas");
+            SqlCommand cmd = null;
+
+            string selectString =
+            "SELECT realname, password " +
+            "FROM Magician " +
+            "WHERE realname = '" + TextBoxUsername.Text + "' AND password = '" + TextBoxPassword.Text + "'";
+
+            cmd = new SqlCommand(selectString, connectionString);
+
+            connectionString.Open();
+            String strResult = String.Empty;
+            strResult = (String)cmd.ExecuteScalar();
+            connectionString.Close();
+
+            if (strResult.Length == 0)
+            {
+                Response.Write("Wrong details!");
+                //could redirect to register page
+            }
+            else
+            {
+                Response.Redirect("Signup.aspx");
+                //set loggin in sessions variables
+            }
+        }
     }
 }

@@ -34,7 +34,7 @@
             <br />
             <asp:TextBox ID="TextBoxPassword" placeholder="Password" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="ButtonLogin" runat="server" CssClass="auto-style3" Text="LOGIN" Width="150px" />
+            <asp:Button ID="ButtonLogin" runat="server" CssClass="auto-style3" Text="LOGIN" Width="150px" OnClick="ButtonLogin_Click" />
             <br />
             <asp:Label ID="LabelSignup" runat="server" Text="Don't have an account yet? "></asp:Label>
             <br />
