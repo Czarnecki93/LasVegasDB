@@ -36,9 +36,7 @@
             <br />
             <asp:Button ID="ButtonLogin" runat="server" CssClass="auto-style3" Text="LOGIN" Width="150px" OnClick="ButtonLogin_Click" />
             <br />
-            <asp:Label ID="LabelSignup" runat="server" Text="Don't have an account yet? "></asp:Label>
-            <br />
-            <asp:HyperLink ID="SignupLink" runat="server" Font-Underline="True" ForeColor="Blue" NavigateUrl="~/Signup.aspx">Signup</asp:HyperLink>
+            <asp:Label ID="LabelLogin" runat="server"></asp:Label>
         </div>
         <h1 class="auto-style1">WELCOME TO THE LAS VEGAS MAGICAL SHOW!</h1>
         <div class="auto-style1">

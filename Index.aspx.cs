@@ -33,15 +33,13 @@ namespace LasVegasDB
             strResult = (String)cmd.ExecuteScalar();
             connectionString.Close();
 
-            if (strResult.Length == 0)
+            if (strResult == null)
             {
-                Response.Write("Wrong details!");
-                //could redirect to register page
+                LabelLogin.Text = "Username or password is incorrect!";
             }
             else
             {
                 Response.Redirect("Signup.aspx");
-                //set loggin in sessions variables
             }
         }
     }

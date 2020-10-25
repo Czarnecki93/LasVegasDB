@@ -51,22 +51,13 @@ namespace LasVegasDB
         protected global::System.Web.UI.WebControls.Button ButtonLogin;
 
         /// <summary>
-        /// LabelSignup control.
+        /// LabelLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelSignup;
-
-        /// <summary>
-        /// SignupLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink SignupLink;
+        protected global::System.Web.UI.WebControls.Label LabelLogin;
 
         /// <summary>
         /// SqlDataSourceProgram control.
