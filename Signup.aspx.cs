@@ -171,7 +171,7 @@ namespace LasVegasDB
                 LabelUserTable.Text = "This user has active acts.";
             }
 
-            LabelUserTable.Text = "Deleted user.";
+            LabelUserTable.Text = "User has been deleted.";
         }
     }
 }
