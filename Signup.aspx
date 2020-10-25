@@ -37,7 +37,7 @@
         </div>
         <h1 class="auto-style1">MANAGE USERS</h1>
         <div>
-            <asp:SqlDataSource ID="SqlDataSourceUsers" runat="server" ConnectionString="<%$ ConnectionStrings:LasVegasConnectionString %>" SelectCommand="SELECT id AS 'ID', realname AS 'Name',
+            <asp:SqlDataSource ID="SqlDataSourceUsers" runat="server" ConnectionString="<%$ ConnectionStrings:LasVegasConnectionString %>" DeleteCommand="DELETE FROM Magician WHERE (id = @id)" SelectCommand="SELECT id AS 'ID', realname AS 'Name',
 CASE
     WHEN accesslevel = 1 THEN 'Manager'
     WHEN accesslevel = 2 THEN 'Secretary'

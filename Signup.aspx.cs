@@ -148,7 +148,30 @@ namespace LasVegasDB
 
         protected void GridViewUsers_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            LabelUserTable.Text = "Delete clicked.";
+            SqlConnection conn = new SqlConnection(@"data source = localhost; integrated security = true; database = LasVegas");
+            SqlCommand cmd = null;
+
+            // Get the id
+            string id = GridViewUsers.DataKeys[e.RowIndex].Value.ToString();
+
+            // Create the delete query
+            string sqldel = @"delete from Magician where id = @id";
+
+            cmd = new SqlCommand(sqldel, conn);
+            cmd.Parameters.Add("@id", SqlDbType.Int);
+            cmd.Parameters["@id"].Value = id;
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteScalar();
+            }
+            catch (SqlException)
+            {
+                LabelUserTable.Text = "This user has active acts.";
+            }
+
+            LabelUserTable.Text = "Deleted user.";
         }
     }
 }
